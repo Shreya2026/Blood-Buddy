@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Blood_Buddy </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='hospital.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='Images/bb_logo(black).png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="header-logo"><img src="{{ url_for('static', filename='Images/bb_logo(black).png') }}"></div>
+            <div class="header-list">
+                <ul>
+                  <li><a href="{{ url_for('helps') }}">Get Help</a></li>
+                    <li><a href="{{ url_for('seeker') }}">Need Blood?</a></li>
+                    <li><a href="{{ url_for('index1') }}#vol-sect">Volunteer</a></li>
+                    <li><a href="{{ url_for('index1') }}#about-us">About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="box">
+            <form align="center" class="hospital-form" id="hospitalForm">
+                <table class="hospital-table">
+                    <thead>
+                        <tr>
+                            <th>Hospital</th>
+                            <th>Schedule Appointment</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+        <tbody>
+          <tr>
+            <td> Fortis Escorts Okhla</td>
+            <td><button id="submitBtn1" type="submit" class="btn" onclick="openPopup1()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Fortis+Escorts+Heart+Institute/@28.5605806,77.2739864,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce392b869bbaf:0x865db71ba6f271b2!8m2!3d28.5605806!4d77.2739864!16s%2Fg%2F1tyzxc62?entry=ttu"  target="_blank" class="view">View Location</a></button></td>
+          </tr>
+          <tr>
+            <td>Jeevan Hospital</td>
+            <td><button id="submitBtn2" type="submit" class="btn" onclick=" openPopup2()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Jeevan+Hospital/@28.6129808,77.3788862,14z/data=!4m10!1m2!2m1!1sJeevan+hospital!3m6!1s0x390cef955ad3d40f:0x806448c1573f7e78!8m2!3d28.6129808!4d77.3963957!15sCg9KZWV2YW4gaG9zcGl0YWxaESIPamVldmFuIGhvc3BpdGFskgEIaG9zcGl0YWyaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUlhkQzFQYTFCUkVBReABAA!16s%2Fg%2F11g6wdxcjs?entry=ttu" target="_blank" class="view">View Location</a></button></td>
+          </tr>
+          <tr>
+            <td>Metro Hospital</td>
+            <td><button id="submitBtn3" type="submit" class="btn" onclick=" openPopup3()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Metro+Multispeciality+Hospital:+Best+Hospital+in+Noida,+Uttar+Pradesh+%7C+Top+Ranking+Hospital+in+2023/@28.5973485,77.2659273,12z/data=!4m10!1m2!2m1!1sMetro+Hospital!3m6!1s0x390ce5035eaaaaab:0x2dd548f41f1a66b!8m2!3d28.5973485!4d77.3359651!15sCg5NZXRybyBIb3NwaXRhbCIDiAEBkgEQcHJpdmF0ZV9ob3NwaXRhbOABAA!16s%2Fg%2F1tf3xrt6?entry=ttu"  target="_blank"class="view">View Location</a></button></td>
+          </tr>
+          <tr>
+            <td>Manas Hospital</td>
+            <td><button id="submitBtn4" type="submit" class="btn" onclick=" openPopup4()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Manas+Hospital/@28.5864321,77.221408,11z/data=!4m10!1m2!2m1!1sManas+hospital!3m6!1s0x390ce59c1c00d913:0xce2052140f17f2c0!8m2!3d28.5864321!4d77.3614837!15sCg5NYW5hcyBob3NwaXRhbFoQIg5tYW5hcyBob3NwaXRhbJIBEGdlbmVyYWxfaG9zcGl0YWyaASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTmFNVXBsUzNSblJSQULgAQA!16s%2Fg%2F12ltgf4_n?entry=ttu" target="_blank" class="view">View Location</a></button></td>
+          </tr>
+          <tr>
+            <td>Aavaam Hospital</td>
+            <td><button id="submitBtn5" type="submit" class="btn" onclick=" openPopup5()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Aavaam+hospital/@28.4383884,77.5403691,17z/data=!3m1!4b1!4m6!3m5!1s0x390cc1b8c976262d:0x73b0a461421a47e9!8m2!3d28.4383884!4d77.5403691!16s%2Fg%2F11q2yq_jwq?entry=ttu" target="_blank" class="view">View Location</a></button></td>
+          </tr>
+          <tr>
+            <td>Orion Hospital</td>
+            <td><button id="submitBtn6" type="submit" class="btn" onclick=" openPopup6()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Orion+Hospital/@28.4367262,77.5254614,14z/data=!4m10!1m2!2m1!1sOrion+Hospital!3m6!1s0x390cc144f2f2b7a1:0xfbf1c79d1ad79a89!8m2!3d28.4367262!4d77.5429709!15sCg5PcmlvbiBIb3NwaXRhbJIBCGhvc3BpdGFs4AEA!16s%2Fg%2F11g18zl5c7?entry=ttu"  target="_blank"class="view">View Location</a></button></td>
+          </tr>
+          <tr>
+            <td>Prayag Hospital</td>
+            <td><button id="submitBtn7" type="submit" class="btn" onclick=" openPopup7()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Prayag+Hospital+%26+Research+Centre,+J-206%2FA1,+Sector+41,+Noida,+Uttar+Pradesh+201301/@28.5636392,77.3654874,17z/data=!3m1!4b1!4m6!3m5!1s0x390ce5edc2aaf58b:0x254ffe386fd3a6f4!8m2!3d28.5635798!4d77.3654163!16s%2Fg%2F11qs979yh9?entry=ttu" target="_blank" class="view">View Location</a></button></td>
+          </tr>
+          <tr>
+            <td>Surbhi Hospital</td>
+            <td><button id="submitBtn8" type="submit" class="btn" onclick=" openPopup8()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Surbhi+Hospital/@28.5791589,77.326234,13z/data=!4m10!1m2!2m1!1sSurbhi+Hospital!3m6!1s0x390ce5974f3dfb29:0x4778dd7eba0ecdef!8m2!3d28.5791589!4d77.3612529!15sCg9TdXJiaGkgSG9zcGl0YWxaESIPc3VyYmhpIGhvc3BpdGFskgEQcHJpdmF0ZV9ob3NwaXRhbJoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VONGVFdElTRFJuUlJBQuABAA!16s%2Fg%2F12642nnvk?entry=ttu" target="_blank" class="view">View Location</a></button></td>
+          </tr>
+          <tr>
+            <td>Vinayak Hospital</td>
+            <td><button id="submitBtn9" type="submit" class="btn" onclick=" openPopup9()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Vinayak+Hospital/@28.5711909,77.2931636,13z/data=!4m10!1m2!2m1!1sVinayak+Hospital!3m6!1s0x390ce530b8520043:0x82783804e15378af!8m2!3d28.5711909!4d77.3281825!15sChBWaW5heWFrIEhvc3BpdGFsWhIiEHZpbmF5YWsgaG9zcGl0YWySAQhob3NwaXRhbJoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VSUFgyUXllbGRSRUFF4AEA!16s%2Fg%2F1tfvxjht?entry=ttu" target="_blank" class="view">View Location</a></button></td>
+          </tr>
+          <tr>
+            <td>Motherhood Hospital</td>
+            <td><button id="submitBtns" type="submit" class="btn" onclick=" openPopups()" >Schedule</button></td>
+            <td><button class="location-btn"><a href="https://www.google.com/maps/place/Motherhood+Hospital+-+Noida/@28.5711909,77.2931636,11z/data=!4m10!1m2!2m1!1sMotherhood+Hospital!3m6!1s0x390ce5380f9919a5:0x3e520ad05e8dff7c!8m2!3d28.557393!4d77.3683391!15sChNNb3RoZXJob29kIEhvc3BpdGFsWhUiE21vdGhlcmhvb2QgaG9zcGl0YWySAQhob3NwaXRhbJoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VSeGJHVXRObDlCUlJBQuABAA!16s%2Fg%2F11h764f_2_?entry=ttu" target="_blank" class="view">View Location</a></button></td>
+          </tr>
+        </tbody>
+      </table>
+
+     
+  </form>
+</div>
+
+<div class="popup" id="popup1">
+  <img src="{{ url_for('static', filename='Images/tick.jpeg') }}">
+  <h2>Appointment Scheduled!</h2>
+  <p>You can reach us within 2 days!</p>
+  <button type="button" id="okBtn1" onclick="closePopup1()">OK</button>
+</div>
+
+<div class="popup" id="popup2">
+  <img src="{{ url_for('static', filename='Images/tick.jpeg') }}">
+  <h2>Appointment Scheduled!</h2>
+  <p>You can reach us within 2 days!</p>
+  <button type="button" id="okBtn2" onclick="closePopup2()">OK</button>
+</div>
+
+<div class="popup" id="popup3">
+  <img src="{{ url_for('static', filename='Images/tick.jpeg') }}">
+  <h2>Appointment Scheduled!</h2>
+  <p>You can reach us within 2 days!</p>
+  <button type="button" id="okBtn3" onclick="closePopup3()">OK</button>
+</div>
+
+<div class="popup" id="popup4">
+  <img src="{{ url_for('static', filename='Images/tick.jpeg') }}">
+  <h2>Appointment Scheduled!</h2>
+  <p>You can reach us within 2 days!</p>
+  <button type="button" id="okBtn4" onclick="closePopup4()">OK</button>
+</div>
+
+<div class="popup" id="popup5">
+  <img src="{{ url_for('static', filename='Images/tick.jpeg') }}">
+  <h2>Appointment Scheduled!</h2>
+  <p>You can reach us within 2 days!</p>
+  <button type="button" id="okBtn5" onclick="closePopup5()">OK</button>
+</div>
+
+<div class="popup" id="popup6">
+  <img src="{{ url_for('static', filename='Images/tick.jpeg') }}">
+  <h2>Appointment Scheduled!</h2>
+  <p>You can reach us within 2 days!</p>
+  <button type="button" id="okBtn6" onclick="closePopup6()">OK</button>
+</div>
+
+<div class="popup" id="popup7">
+  <img src="{{ url_for('static', filename='Images/tick.jpeg') }}">
+  <h2>Appointment Scheduled!</h2>
+  <p>You can reach us within 2 days!</p>
+  <button type="button" id="okBtn7" onclick="closePopup7()">OK</button>
+</div>
+
+<div class="popup" id="popup8">
+  <img src="{{ url_for('static', filename='Images/tick.jpeg') }}">
+  <h2>Appointment Scheduled!</h2>
+  <p>You can reach us within 2 days!</p>
+  <button type="button" id="okBtn8" onclick="closePopup8()">OK</button>
+</div>
+
+<div class="popup" id="popup9">
+  <img src="{{ url_for('static', filename='Images/tick.jpeg') }}">
+  <h2>Appointment Scheduled!</h2>
+  <p>You can reach us within 2 days!</p>
+  <button type="button" id="okBtn9" onclick="closePopup9()">OK</button>
+</div>
+
+<div class="popup2" id="popups">
+  <img src="{{ url_for('static', filename='Images/sorry.png') }}">
+  <h2>Sorry!</h2>
+  <p>Please try another hospital!</p>
+  <button type="button" id="okBtns" onclick="closePopups()">OK</button>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+      let popup1 = $("#popup1");
+      let popup2 = $("#popup2");
+      let popup3 = $("#popup3");
+      let popup4 = $("#popup4");
+      let popup5 = $("#popup5");
+      let popup6 = $("#popup6");
+      let popup7 = $("#popup7");
+      let popup8 = $("#popup8");
+      let popup9 = $("#popup9");
+      let popups = $("#popups");
+
+      function openPopup1() {
+          popup1.addClass("open-popup");
+      }
+      function openPopup2() {
+          popup2.addClass("open-popup");
+      }
+      function openPopup3() {
+          popup3.addClass("open-popup");
+      }
+      function openPopup4() {
+          popup4.addClass("open-popup");
+      }
+      function openPopup5() {
+          popup5.addClass("open-popup");
+      }
+      function openPopup6() {
+          popup6.addClass("open-popup");
+      }
+      function openPopup7() {
+          popup7.addClass("open-popup");
+      }
+      function openPopup8() {
+          popup8.addClass("open-popup");
+      }
+      function openPopup9() {
+          popup9.addClass("open-popup");
+      }
+      function openPopups() {
+          popups.addClass("sorry-popup");
+      }
+
+      function closePopup1() {
+          popup1.removeClass("open-popup");
+      }
+      function closePopup2() {
+          popup2.removeClass("open-popup");
+      }
+      function closePopup3() {
+          popup3.removeClass("open-popup");
+      }
+      function closePopup4() {
+          popup4.removeClass("open-popup");
+      }
+      function closePopup5() {
+          popup5.removeClass("open-popup");
+      }
+      function closePopup6() {
+          popup6.removeClass("open-popup");
+      }
+      function closePopup7() {
+          popup7.removeClass("open-popup");
+      }
+      function closePopup8() {
+          popup8.removeClass("open-popup");
+      }
+      function closePopup9() {
+          popup9.removeClass("open-popup");
+      }
+      function closePopups() {
+          popups.removeClass("sorry-popup");
+      }
+
+      // Ensure the document is fully loaded before attaching click events
+      $("#submitBtn1").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopup1();
+      });
+      $("#submitBtn2").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopup2();
+      });
+      $("#submitBtn3").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopup3();
+      });
+      $("#submitBtn4").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopup4();
+      });
+      $("#submitBtn5").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopup5();
+      });
+      $("#submitBtn6").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopup6();
+      });
+      $("#submitBtn7").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopup7();
+      });
+      $("#submitBtn8").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopup8();
+      });
+      $("#submitBtn9").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopup9();
+      });
+      $("#submitBtns").on("click", function(event) {
+          event.preventDefault(); // Prevent form submission for demonstration purposes
+          openPopups();
+      });
+
+      $("#okBtn1").on("click", function() {
+          closePopup1();
+      });
+      $("#okBtn2").on("click", function() {
+          closePopup2();
+      });
+      $("#okBtn3").on("click", function() {
+          closePopup3();
+      });
+      $("#okBtn4").on("click", function() {
+          closePopup4();
+      });
+      $("#okBtn5").on("click", function() {
+          closePopup5();
+      });
+      $("#okBtn6").on("click", function() {
+          closePopup6();
+      });
+      $("#okBtn7").on("click", function() {
+          closePopup7();
+      });
+      $("#okBtn8").on("click", function() {
+          closePopup8();
+      });
+      $("#okBtn9").on("click", function() {
+          closePopup9();
+      });
+      $("#okBtns").on("click", function() {
+          closePopups();
+      });
+  });
+
+
+  
+</script>
+
+
+</main>
+
+
+
+
+<footer>
+<div class="siteFooterBar">
+  <div class="content1">
+      <div class="foot">2023 © All rights reserved.</div>
+  </div>
+</div>
+<div class="footer-content">
+  <h3>JOIN OUR CAUSE</h3>
+  <p>Donating blood or platelets can be intimidating and even scary. Time to put those hesitations and fears aside.
+      Learn from Blood Buddy and platelet donors how simple and easy it is to roll up a sleeve and help save lives.</p>
+  <div class="socials">
+      <ul class="sci">
+          <li><a href="https://www.facebook.com/givebloodnhs/" target="_blank"><i
+                      class="fab fa-facebook"></i></a></li>
+          <li><a href="https://www.instagram.com/indiablooddonation/?hl=en" target="_blank"><i
+                      class="fab fa-instagram"></i></a></li>
+          <li><a href="http://nbtc.naco.gov.in/" target="_blank"><i class="fas fa-globe"></i></a></li>
+      </ul>
+  </div>
+</div>
+</footer>
+</body>
+
+</html>

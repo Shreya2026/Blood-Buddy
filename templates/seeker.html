@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='donate.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='Images/bb_logo(black).png') }}" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='donor.css') }}">
+</head>
+<title>Connect with us & save lives around your location </title>
+<script>
+    function seekerUser(event) {
+        console.log('Button clicked!');
+        const Name = document.getElementById('Name').value;
+        const Gender = document.querySelector('input[name="gender"]:checked').value;
+        const Blood_Type = document.getElementById('Blood_Type').value;
+        const Contact_Number = document.getElementById('Contact_Number').value;
+        const Location = document.getElementById('Location').value;
+
+        console.log('Sending data to server:', { Name: Name, Gender: Gender, Blood_Type: Blood_Type, Contact_Number: Contact_Number, Location: Location });
+
+        fetch('/api/seeker', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                Name: Name,
+                Gender: Gender,
+                Blood_Type: Blood_Type,
+                Contact_Number: Contact_Number,
+                Location: Location
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response from server:', data);
+
+                if (data.error) {
+                    console.error('Error registering user:', data.error);
+                } else {
+                    console.log('Added successfully!');
+                    openHospital(); // Move the redirection here
+                }
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+            });
+
+        // Prevent form submission and page refresh
+        event.preventDefault();
+    }
+
+    function openHospital() {
+        window.location.href = '/hospital';
+    }
+</script>
+
+<body>
+    <header>
+        <nav>
+            <div class="header-logo"><img src="{{ url_for('static', filename='Images/bb_logo(black).png') }}" alt="Black Logo">
+            </div>
+            <div class="header-list">
+                <ul>
+                    <li><a href="{{ url_for('helps') }}">Get Help</a></li>
+                    <li><a href="{{ url_for('seeker') }}">Need Blood?</a></li>
+                    <li><a href="index1.html#vol-sect" target="_blank">Volunteer</a></li>
+                    <li><a href="index1.html#about-us" target="_blank">About Us</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="portal">
+            <div class="container">
+                <h1 style="text-align: center;" class="heading"><i><b><u>Seeker Info</u></b></i></h1><br>
+
+
+                <form align="center" class="box">
+                    <table align="center">
+                        <tr>
+                            <td class="line">
+                                Name :
+                            </td>
+                            <td>
+                                <input type="text" id="Name" class="txt" placeholder="Enter you name" name="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="line">
+                                Gender :
+                            </td>
+                            <td>
+                                <div class="gender">
+                                    <input type="radio" name="gender" id="MaleGenderInput">Male
+                                    <input type="radio" name="gender" id="FemaleGenderInput">Female
+                                    <input type="radio" name="gender" id="OtherGenderInput">Other
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="line">
+                                Bloodtype :
+                            </td>
+                            <th>
+                                <input type="text" class="txt" placeholder="Enter blood type" id="Blood_Type"
+                                    name="Blood_Type">
+
+                            </th>
+                        </tr>
+
+                        <tr>
+                            <td class="line">
+                                Contact no. :
+                            </td>
+                            <td>
+                                <input type="tel" class="txt" id="Contact_Number" placeholder="+91**********"
+                                    id="Contact_Number">
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="line">
+                                Location :
+                            </td>
+                            <td>
+                                <input type="text" id="Location" class="txt" placeholder="Enter your location"
+                                    location="">
+                            </td>
+                        </tr>
+
+                    </table>
+
+
+                    <button id="submit" type="submit" class=" btn" value="Submit" onclick="seekerUser(event)">Submit</button>
+
+                </form>
+            </div>
+
+        </div>
+     
+
+    </main>
+
+    <footer>
+        <div class="siteFooterBar">
+            <div class="content1">
+                <div class="foot">2024 © All rights reserved.</div>
+            </div>
+        </div>
+        <div class="footer-content">
+            <h3>JOIN OUR CAUSE</h3>
+            <p>Donating blood or platelets can be intimidating and even scary. Time to put those hesitations and fears
+                aside. Learn from Blood Buddy and platelet donors how simple and easy it is to roll up a sleeve and help
+                save lives.</p>
+            <div class="socials">
+                <ul class="sci">
+                    <li><a href="https://www.facebook.com/givebloodnhs/" target="_blank"><i
+                                class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/indiablooddonation/?hl=en" target="_blank"><i
+                                class="fab fa-instagram"></i></a></li>
+                    <li><a href="http://nbtc.naco.gov.in/" target="_blank"><i class="fas fa-globe"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </footer>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='Register.css') }}">
+
+
+    <link rel="icon" href="{{ url_for('static', filename='Images/bb_logo(black).png') }}"  type="image/png">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='fontawesome/css/all.min.css') }}"> -->
+
+
+</head>
+<title>Start Saving Lives </title>
+<script>
+    function registerUser() {
+    console.log('Button clicked!');
+    const Name = document.getElementById('username').value;
+    const Email = document.getElementById('email').value;
+    const Password = document.getElementById('password').value;
+    const Type = document.getElementById('user_type').value;
+
+    console.log('Sending data to server:', { username: Name, email: Email, password: Password, user_type: Type });
+
+    fetch('/api/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            username: Name,
+            email: Email,
+            password: Password,
+            user_type: Type
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Response from server:', data);
+
+        if (data.error) {
+            console.error('Error registering user:', data.error);
+        } else {
+            console.log('Registration successful!');
+
+            // Redirect to the appropriate page based on user_type
+if (data.user_type === 'Donor') {
+    window.location.href = '/index1.html';
+} else if (data.user_type === 'Seeker') {
+    window.location.href = '/index2.html';
+}
+
+        }
+    })
+    .catch(error => {
+        console.error('Error registering user:', error);
+    });
+}
+
+
+    </script>
+<body>
+    <br>
+    <br>
+    <br>
+    <h1 class="register" ><i><b><u>Register</u></b></i></h1>
+
+
+<div class="inner">
+    <div class="photo">
+        <img src="{{ url_for('static', filename='Images/regphoto.png') }}" alt="Your Image Alt Text">
+    </div>
+    <div class="user-form">
+        <h1>Start Saving Lives</h1>
+        <form action="{{ url_for('register_form') }}" method="post">
+            <i class="fas fa-user icon"></i>
+            <input type="text" name="username" placeholder="Name" id="username" required>
+            <br>
+            <i class="fas fa-envelope-square"></i>
+            <input type="email" name="email" placeholder="E-mail" id="email" required>
+            <br>
+            <i class="fas fa-lock"></i>
+            <input type="password" name="password" placeholder="Password" id="password" required>
+            <div class="safety" style="font-family: sans-serif; font-size: 20px;">
+                <br>
+                <i class="fas fa-user icon"></i>
+                <select name="user_type" id="user_type" placeholder="Select">
+                    <option>Donor</option>
+                    <option>Seeker</option>
+                </select>
+            </div>
+            <div class="action-btn" align="center">
+                <button type="button" onclick="registerUser()" class="btn primary">Create Account</button>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<script src="{{ url_for('static', filename='Register.js') }}" ></script>
+</body>
+</html>
